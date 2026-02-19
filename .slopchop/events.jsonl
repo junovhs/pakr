@@ -17,3 +17,12 @@
 {"timestamp":1771534839,"kind":"check_passed"}
 {"timestamp":1771535706,"kind":"check_started"}
 {"timestamp":1771535712,"kind":"check_passed"}
+{"timestamp":1771537167,"kind":"check_started"}
+{"timestamp":1771537168,"kind":{"check_failed":{"exit_code":101}}}
+{"timestamp":1771537174,"kind":{"check_failed":{"exit_code":101}}}
+{"timestamp":1771537425,"kind":"check_started"}
+{"timestamp":1771537426,"kind":{"check_failed":{"exit_code":101}}}
+{"timestamp":1771537734,"kind":"check_started"}
+{"timestamp":1771537738,"kind":"check_passed"}
+{"timestamp":1771539521,"kind":"check_started"}
+{"timestamp":1771539526,"kind":{"check_failed":{"exit_code":1}}}

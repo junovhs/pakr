@@ -14,3 +14,4 @@ crossterm = "0.28"
 arboard = "3"
 clap = { version = "4", features = ["derive"] }
 anyhow = "1"
+ignore = "0.4"

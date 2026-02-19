@@ -142,3 +142,21 @@ pub fn toggle_node_expanded(tree: &mut FileNode, path: &Path) {
         toggle_node_expanded(child, path);
     }
 }
+
+pub fn collapse_all(node: &mut FileNode) {
+    if node.is_dir {
+        node.expanded = false;
+        for child in &mut node.children {
+            collapse_all(child);
+        }
+    }
+}
+
+pub fn expand_all(node: &mut FileNode) {
+    if node.is_dir {
+        node.expanded = true;
+        for child in &mut node.children {
+            expand_all(child);
+        }
+    }
+}

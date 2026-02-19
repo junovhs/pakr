@@ -1,21 +1,21 @@
 SLOPCHOP CHECK REPORT
-Generated: 2026-02-19 12:30:00
+Generated: 2026-02-19 13:00:39
 Status: PASSED
 
 === DASHBOARD ===
 Top 5 Cognitive Complexity:
+  13   src\tui\keys.rs
   12   src\subsystems.rs
-  12   src\tui\keys.rs
   9    src\semmap.rs
   8    src\tui\mod.rs
   8    src\tui\panels\right.rs
 
 Top 5 Largest Files (Tokens):
   1281  src\types.rs
+  1116  src\categories.rs
   1017  src\semmap.rs
   998   src\tui\panels\left.rs
-  975   src\tui\keys.rs
-  938   src\scanner.rs
+  995   src\tui\keys.rs
 
 === VIOLATIONS ===
 None. Codebase is clean.
@@ -24,7 +24,7 @@ None. Codebase is clean.
 
 >>> COMMAND: cargo clippy --all-targets -- -D warnings -W clippy::pedantic -W clippy::unwrap_used -W clippy::expect_used -W clippy::indexing_slicing -A clippy::struct_excessive_bools -A clippy::module_name_repetitions -A clippy::missing_errors_doc -A clippy::must_use_candidate
     Checking pakr v0.1.0 (C:\Users\SpencerNunamakerTrav\pakr)
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.52s
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.45s
 
 
 >>> COMMAND: cargo test
@@ -45,7 +45,7 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
 
    Compiling pakr v0.1.0 (C:\Users\SpencerNunamakerTrav\pakr)
-    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.05s
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.88s
      Running unittests src\lib.rs (target\debug\deps\pakr-a78c2da5ebb8db6d.exe)
      Running unittests src\main.rs (target\debug\deps\pakr-14d4097e3b331953.exe)
    Doc-tests pakr

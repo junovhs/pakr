@@ -11,7 +11,7 @@ use std::{collections::HashSet, path::PathBuf};
 pub fn render(frame: &mut Frame, area: Rect, state: &AppState) {
     let chunks = Layout::default()
         .direction(Direction::Vertical)
-        .constraints([Constraint::Min(3), Constraint::Length(2)])
+        .constraints([Constraint::Min(3), Constraint::Length(1)])
         .split(area);
 
     let mut iter = chunks.iter().copied();
@@ -83,12 +83,20 @@ fn render_status(frame: &mut Frame, area: Rect, state: &AppState, selected: &Has
         .filter_map(|p| state.file_sizes.get(p))
         .sum();
     let tokens = bytes / 4;
-    let text = format!(
-        " {n} files  {}  ~{}k tok  |  {}",
-        fmt_bytes(bytes),
-        tokens / 1000,
-        state.status
-    );
+
+    let summary_line = format!(" {n} files  {}  ~{}k tok", fmt_bytes(bytes), tokens / 1000);
+    let hint = &state.status;
+    let width = usize::from(area.width);
+
+    let sep = "  |  ";
+    let available = width.saturating_sub(summary_line.len() + sep.len());
+    let hint_trimmed = if hint.len() > available {
+        &hint[..available]
+    } else {
+        hint.as_str()
+    };
+
+    let text = format!("{summary_line}{sep}{hint_trimmed}");
     frame.render_widget(
         Paragraph::new(text).style(Style::default().fg(Color::DarkGray)),
         area,

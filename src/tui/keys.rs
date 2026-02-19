@@ -3,10 +3,13 @@ use crate::{
     types::{AppState, Focus},
 };
 use anyhow::Result;
-use crossterm::event::{KeyCode, KeyEvent};
+use crossterm::event::{KeyCode, KeyEvent, KeyEventKind};
 use std::path::PathBuf;
 
 pub fn handle(key: KeyEvent, state: &mut AppState) -> Result<bool> {
+    if key.kind != KeyEventKind::Press {
+        return Ok(false);
+    }
     match key.code {
         KeyCode::Char('q' | 'Q') => return Ok(true),
         KeyCode::Tab => cycle_focus(state),

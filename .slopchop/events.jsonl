@@ -11,3 +11,7 @@
 {"timestamp":1771532965,"kind":{"check_failed":{"exit_code":101}}}
 {"timestamp":1771532998,"kind":"check_started"}
 {"timestamp":1771533000,"kind":"check_passed"}
+{"timestamp":1771533389,"kind":"check_started"}
+{"timestamp":1771533389,"kind":{"check_failed":{"exit_code":101}}}
+{"timestamp":1771534836,"kind":"check_started"}
+{"timestamp":1771534839,"kind":"check_passed"}

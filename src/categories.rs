@@ -3,10 +3,14 @@ use crate::{
     semmap::SemmapData,
     types::{Category, CategoryKind},
 };
-use std::path::{Path, PathBuf};
+use std::{
+    collections::HashSet,
+    path::{Path, PathBuf},
+};
 
-pub fn from_semmap(data: &SemmapData) -> Vec<Category> {
-    data.layers
+pub fn from_semmap(data: &SemmapData, tree: &crate::types::FileNode) -> Vec<Category> {
+    let mut cats: Vec<Category> = data
+        .layers
         .iter()
         .map(|layer| Category {
             kind: CategoryKind::SemmapLayer {
@@ -16,7 +20,38 @@ pub fn from_semmap(data: &SemmapData) -> Vec<Category> {
             files: layer.files.clone(),
             enabled: is_layer_on_by_default(layer.index),
         })
-        .collect()
+        .collect();
+
+    // Files on disk not mentioned in any SEMMAP layer get an "Other" category.
+    let tracked: HashSet<&PathBuf> = data.layers.iter().flat_map(|l| l.files.iter()).collect();
+
+    let untracked: Vec<PathBuf> = scanner::all_files(tree)
+        .into_iter()
+        .filter(|p| !tracked.contains(p))
+        .collect();
+
+    if !untracked.is_empty() {
+        // Split untracked into docs vs other
+        let docs: Vec<PathBuf> = untracked.iter().filter(|p| is_doc(p)).cloned().collect();
+        let other: Vec<PathBuf> = untracked.into_iter().filter(|p| !is_doc(p)).collect();
+
+        if !docs.is_empty() {
+            cats.push(Category {
+                kind: CategoryKind::Docs,
+                files: docs,
+                enabled: false,
+            });
+        }
+        if !other.is_empty() {
+            cats.push(Category {
+                kind: CategoryKind::Assets,
+                files: other,
+                enabled: false,
+            });
+        }
+    }
+
+    cats
 }
 
 fn is_layer_on_by_default(index: u8) -> bool {

@@ -20,7 +20,10 @@ fn main() -> Result<()> {
     let has_semmap = semmap_data.is_some();
 
     let (cats, subs) = if let Some(ref sd) = semmap_data {
-        (categories::from_semmap(sd), subsystems::build(sd))
+        (
+            categories::from_semmap(sd, &scan.tree),
+            subsystems::build(sd),
+        )
     } else {
         (categories::from_heuristics(&scan.tree), Vec::new())
     };
@@ -40,7 +43,7 @@ fn main() -> Result<()> {
         tree_cursor: 0,
         tree_scroll: 0,
         status: String::from(
-            "[space] toggle  [tab] switch panel  [n] nix  [enter] clipboard  [f] save  [q] quit",
+            "[space] toggle  [tab] panel  [n] nix  [enter] clipboard  [f] save  [q] quit",
         ),
     };
 

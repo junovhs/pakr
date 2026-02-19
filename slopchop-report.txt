@@ -1,5 +1,5 @@
 SLOPCHOP CHECK REPORT
-Generated: 2026-02-19 13:00:39
+Generated: 2026-02-19 13:15:12
 Status: PASSED
 
 === DASHBOARD ===
@@ -23,8 +23,8 @@ None. Codebase is clean.
 === FULL OUTPUT LOGS ===
 
 >>> COMMAND: cargo clippy --all-targets -- -D warnings -W clippy::pedantic -W clippy::unwrap_used -W clippy::expect_used -W clippy::indexing_slicing -A clippy::struct_excessive_bools -A clippy::module_name_repetitions -A clippy::missing_errors_doc -A clippy::must_use_candidate
-    Checking pakr v0.1.0 (C:\Users\SpencerNunamakerTrav\pakr)
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.45s
+    Checking pakr v0.0.1 (C:\Users\SpencerNunamakerTrav\pakr)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.60s
 
 
 >>> COMMAND: cargo test
@@ -44,10 +44,10 @@ running 0 tests
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
 
-   Compiling pakr v0.1.0 (C:\Users\SpencerNunamakerTrav\pakr)
-    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.88s
-     Running unittests src\lib.rs (target\debug\deps\pakr-a78c2da5ebb8db6d.exe)
-     Running unittests src\main.rs (target\debug\deps\pakr-14d4097e3b331953.exe)
+   Compiling pakr v0.0.1 (C:\Users\SpencerNunamakerTrav\pakr)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.43s
+     Running unittests src\lib.rs (target\debug\deps\pakr-107f30e5a1e03d0b.exe)
+     Running unittests src\main.rs (target\debug\deps\pakr-b31366e9bcffd104.exe)
    Doc-tests pakr
 
 
